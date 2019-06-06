@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="register">
+        {{ form_start(form, {'method': 'post', 'action': path('ajouter_cables'),
+            'attr': {'class': 'register-form'}}) }}
+
+        <div class="register-table">
+            <div class="row">
+                <span>
+                    Libelle
+                </span>
+                {{ form_widget(form.libelle, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Type
+                </span>
+                {{ form_widget(form.type, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Couleur
+                </span>
+                {{ form_widget(form.couleur, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Type du Métal
+                </span>
+                {{ form_widget(form.typeMetal, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Poids (Kg/Km)
+                </span>
+                {{ form_widget(form.poidsKgKm, {'attr':{'class':'field', 'step': 'any'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Quantité Disponible
+                </span>
+                {{ form_widget(form.quantite, {'attr':{'class':'field'}}) }}
+            </div>
+        </div>
+
+        <div>
+            <input type="submit" value="Soumettre" class="submit-btn" />
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock content %}

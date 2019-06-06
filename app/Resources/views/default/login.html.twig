@@ -1,0 +1,57 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Application</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('build/Login.css')}}">
+    </head>
+    <body>
+        <div class="toolbar">
+            <button type="button" class="submit-btn">
+                S'Inscrire
+            </button>
+        </div>
+
+        <div class="login-dialog">
+
+            <p class="title">Bienvenue à <span class="title-1">Tunisie</span> <span class="title-2">Câbles</span></p>
+
+            <p class="sub-text">Connectez-vous pour accèder à l'application.</p>
+
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="login-form">
+
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+
+                <input type="text" name="_username" id="username" value="{{ last_username }}" class="field"
+                       required="required" autocomplete="username" placeholder="Nom d'Utilisateur"/>
+
+                <input type="password" id="password" name="_password" class="field" required="required"
+                       autocomplete="current-password" placeholder="Mot de Passe"/>
+
+                <div class="utils">
+                    <div>
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                        <span>Remember Me</span>
+                    </div>
+                    <div>
+                        <a href="#">Mot de Passe Oublié ?</a>
+                    </div>
+                </div>
+
+                {% if error %}
+                    <div class="error">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+
+                <input type="submit" id="_submit" name="_submit" value="Se Connecter" class="submit-btn"/>
+
+            </form>
+        </div>
+    </body>
+</html>

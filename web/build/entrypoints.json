@@ -1,0 +1,14 @@
+{
+  "entrypoints": {
+    "Login": {
+      "css": [
+        "/build/Login.css"
+      ]
+    },
+    "App": {
+      "css": [
+        "/build/App.css"
+      ]
+    }
+  }
+}

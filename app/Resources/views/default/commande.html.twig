@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="details">
+        <div class="identifier">
+            <p>Commande n°: {{ commande.id }}</p>
+            <span>(Chargée par : {{ commande.ouvrier.nom }} {{ commande.ouvrier.prenom }})</span>
+        </div>
+        <div class="commande">
+            <div class="commande-details">
+                <div class="detail">
+                    <span><strong>Date d'Enregistrement de la Commande</strong></span>
+                    <p>{{ commande.date | date('d F Y H:i:s') }}</p>
+                </div>
+                <div class="detail">
+                    <span><strong>Destination</strong></span>
+                    <p>{{ commande.destination.libelle }}</p>
+                </div>
+                <div class="detail">
+                    <span><strong>Transporté par</strong></span>
+                    <p>{{ commande.transport.libelle }}</p>
+                </div>
+                <div class="detail">
+                    <span><strong>Longueur du Moyen de Transport</strong></span>
+                    <p>{{ commande.transport.longueur }} m</p>
+                </div>
+                <div class="detail">
+                    <span><strong>Largeur du Moyen de Transport</strong></span>
+                    <p>{{ commande.transport.largeur }} m</p>
+                </div>
+            </div>
+            <div class="commande-details">
+                <div class="detail">
+                    <span><strong>Client</strong></span>
+                    <p>{{ commande.client.nom }} {{ commande.client.prenom }}</p>
+                </div>
+                <div class="detail">
+                    <span><strong>Poids Maximal</strong></span>
+                    <p>{{ commande.destination.poidsMax }} Kg</p>
+                </div>
+                <div class="detail">
+                    <span><strong>Type du Transport</strong></span>
+                    <p>{{ commande.transport.type }}</p>
+                </div>
+                <div class="detail">
+                    <span><strong>Hauteur du Moyen de Transport</strong></span>
+                    <p>{{ commande.transport.hauteur }} m</p>
+                </div>
+                <div class="detail">
+                    <span><strong>Poids du Moyen de Transport (Vide)</strong></span>
+                    <p>{{ commande.transport.poidsVide }} Kg</p>
+                </div>
+            </div>
+        </div>
+        <div class="table-settings">
+            <div class="table">
+                <table border="1" class="data-table">
+                    <thead>
+                    <tr>
+                        <th>
+                            Câble
+                        </th>
+                        <th>
+                            Nombre de Palettes
+                        </th>
+                        <th>
+                            Nombre de Tourets
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cable in cables %}
+                        <tr>
+                            <td>
+                                {{ cable.cable.libelle }}
+                            </td>
+                            <td>
+                                {{ cable.palettes }}
+                            </td>
+                            <td>
+                                {{ cable.tourets }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

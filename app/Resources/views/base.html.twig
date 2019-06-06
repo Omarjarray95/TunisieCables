@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Application</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('build/App.css')}}">
+        <link href="{{ asset('build/fontawesome/css/all.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="sidebar-init">
+                <a href="{{ path('home') }}">
+                    <p class="title">
+                        <span class="title-1">Tunisie</span>
+                        <span class="title-2">Câbles</span>
+                    </p>
+                </a>
+                <p class="username">
+                    {{ app.user.nom }} {{ app.user.prenom }}
+                </p>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <button class="role">
+                        Administrateur <i class="fas fa-check-circle"></i>
+                    </button>
+                {% endif %}
+            </div>
+            <div class="sidebar-menu">
+                <a href="{{ path('afficher_ouvriers') }}">
+                    <div class="menu-item">
+                        <i class="fas fa-users"></i>
+                        <span class="item-name">Ouvriers</span>
+                    </div>
+                </a>
+                <a href="{{ path('afficher_stock') }}">
+                    <div class="menu-item">
+                        <i class="fas fa-dolly"></i>
+                        <span class="item-name">Stocks</span>
+                    </div>
+                </a>
+                <a href="{{ path('afficher_commandes') }}">
+                    <div class="menu-item">
+                        <i class="fas fa-clipboard"></i>
+                        <span class="item-name">Commandes</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="body">
+            <div class="toolbar">
+                <a href="{{ path('logout') }}">
+                    <button type="button" class="submit-btn">
+                        Se Déconnecter
+                    </button>
+                </a>
+            </div>
+            <div class="content">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

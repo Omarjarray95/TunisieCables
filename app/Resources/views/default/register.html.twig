@@ -1,0 +1,70 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="register">
+        {{ form_start(form, {'method': 'post', 'action': path('ajouter_ouvriers'),
+            'attr': {'class': 'register-form'}}) }}
+
+        <div class="register-table">
+            <div class="row">
+                <span>
+                    Nom
+                </span>
+                {{ form_widget(form.nom, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Prénom
+                </span>
+                {{ form_widget(form.prenom, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Nom d'Utilisateur
+                </span>
+                {{ form_widget(form.username, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Adresse Eléctronique
+                </span>
+                {{ form_widget(form.email, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Mot de Passe
+                </span>
+                {{ form_widget(form.plainPassword.first, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Confirmer Le Mot de Passe
+                </span>
+                {{ form_widget(form.plainPassword.second, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Âge
+                </span>
+                {{ form_widget(form.age, {'attr':{'class':'field'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Numéro de Téléphone
+                </span>
+                {{ form_widget(form.numero, {'attr':{'class':'field'}}) }}
+            </div>
+        </div>
+
+        <div>
+            <input type="submit" value="Soumettre" class="submit-btn" />
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock content %}
+

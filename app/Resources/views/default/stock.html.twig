@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="table-settings">
+        <div class="settings">
+            <a href="{{ path('ajouter_cables') }}">
+                <button type="button" class="submit-btn">
+                    <i class="fas fa-warehouse"></i> Ajouter Au Stock
+                </button>
+            </a>
+        </div>
+        <div class="table">
+            <table border="1" class="data-table">
+                <thead>
+                <tr>
+                    <th>
+                        Libelle
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                    <th>
+                        Couleur
+                    </th>
+                    <th>
+                        Type du Métal
+                    </th>
+                    <th>
+                        Poids (Kg/Km)
+                    </th>
+                    <th>
+                        Quantité Disponible
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cable in stock %}
+                    <tr>
+                        <td>
+                            {{ cable.libelle }}
+                        </td>
+                        <td>
+                            {{ cable.type }}
+                        </td>
+                        <td>
+                            {{ cable.couleur }}
+                        </td>
+                        <td>
+                            {{ cable.typeMetal }}
+                        </td>
+                        <td>
+                            {{ cable.poidsKgKm }}
+                        </td>
+                        <td>
+                            {{ cable.quantite }}
+                        </td>
+                        <td>
+                            <a href="{{ path('modifier_cables', { 'id': cable.id }) }}">
+                                <button type="button" class="table-btn">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </a>
+                            <a href="{{ path('supprimer_cables', { 'id': cable.id }) }}">
+                                <button type="button" class="table-btn">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

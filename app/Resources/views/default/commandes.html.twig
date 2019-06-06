@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="table-settings">
+        <div class="table">
+            <table border="1" class="data-table">
+                <thead>
+                <tr>
+                    <th>
+                        Identifiant de la Commande
+                    </th>
+                    <th>
+                        Date d'Enregistrement
+                    </th>
+                    <th>
+                        Client
+                    </th>
+                    <th>
+                        Destination
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for commande in commandes %}
+                    <tr onclick="redirectToCommand({{ commande.id }})" class="row-command">
+                        <td>
+                            {{ commande.id }}
+                        </td>
+                        <td>
+                            {{ commande.date | date('d F Y H:i:s') }}
+                        </td>
+                        <td>
+                            {{ commande.client.nom }} {{ commande.client.prenom }}
+                        </td>
+                        <td>
+                            {{ commande.destination.libelle }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function redirectToCommand(id)
+        {
+            window.location.href = "/Application/web/app_dev.php/commandes/details/" + id;
+        }
+    </script>
+{% endblock %}

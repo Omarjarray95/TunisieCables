@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="table-settings">
+        <div class="settings">
+            <a href="{{ path('ajouter_ouvriers') }}">
+                <button type="button" class="submit-btn">
+                    <i class="fas fa-user-plus"></i> Ajouter Un Nouveau Ouvrier
+                </button>
+            </a>
+        </div>
+        <div class="table">
+            <table border="1" class="data-table">
+                <thead>
+                    <tr>
+                        <th>
+                            Nom
+                        </th>
+                        <th>
+                            Prénom
+                        </th>
+                        <th>
+                            Nom d'Utilisateur
+                        </th>
+                        <th>
+                            Adresse Eléctronique
+                        </th>
+                        <th>
+                            Âge
+                        </th>
+                        <th>
+                            Numéro De Téléphone
+                        </th>
+                        <th>
+                            Dernier Accès
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ouvrier in ouvriers %}
+                        {% if ouvrier.enabled == true %}
+                        <tr>
+                            <td>
+                                {{ ouvrier.nom }}
+                            </td>
+                            <td>
+                                {{ ouvrier.prenom }}
+                            </td>
+                            <td>
+                                {{ ouvrier.username }}
+                            </td>
+                            <td>
+                                {{ ouvrier.email }}
+                            </td>
+                            <td>
+                                {{ ouvrier.age }}
+                            </td>
+                            <td>
+                                {{ ouvrier.numero }}
+                            </td>
+                            <td>
+                                {% if ouvrier.lastLogin != null %}
+                                    {{ ouvrier.lastLogin | date('d F Y H:i:s') }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('modifier_ouvriers', { 'id': ouvrier.id }) }}">
+                                    <button type="button" class="table-btn">
+                                        <i class="fas fa-user-edit"></i>
+                                    </button>
+                                </a>
+                                <a href="{{ path('supprimer_ouvriers', { 'id': ouvrier.id }) }}">
+                                    <button type="button" class="table-btn">
+                                        <i class="fas fa-user-minus"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% else %}
+                            <tr class="disabled">
+                                <td>
+                                    {{ ouvrier.nom }}
+                                </td>
+                                <td>
+                                    {{ ouvrier.prenom }}
+                                </td>
+                                <td>
+                                    {{ ouvrier.username }}
+                                </td>
+                                <td>
+                                    {{ ouvrier.email }}
+                                </td>
+                                <td>
+                                    {{ ouvrier.age }}
+                                </td>
+                                <td>
+                                    {{ ouvrier.numero }}
+                                </td>
+                                <td>
+                                    {% if ouvrier.lastLogin != null %}
+                                        {{ ouvrier.lastLogin | date('d F Y H:i:s') }}
+                                    {% endif %}
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
