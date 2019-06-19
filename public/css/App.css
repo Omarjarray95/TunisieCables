@@ -239,7 +239,7 @@ th {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .row > span {
@@ -257,6 +257,20 @@ th {
 }
 
 .field:focus {
+    border-color: #033968;
+    outline: none;
+}
+
+.field-list {
+    width: 50%;
+    height: 40px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.field-list:focus {
     border-color: #033968;
     outline: none;
 }

@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="register">
+        {{ form_start(form, {'method': 'post', 'action': path('ajouter_commande'),
+            'attr': {'class': 'register-form'}}) }}
+
+        <div class="register-table">
+            <div class="row">
+                <span>
+                    Client
+                </span>
+                {{ form_widget(form.client, {'attr':{'class':'field-list'}}) }}
+            </div>
+            <div class="row">
+                <span>
+                    Destination
+                </span>
+                {{ form_widget(form.destination, {'attr':{'class':'field-list'}}) }}
+            </div>
+        </div>
+
+        <div>
+            <input type="submit" value="Soumettre" class="submit-btn" />
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock content %}

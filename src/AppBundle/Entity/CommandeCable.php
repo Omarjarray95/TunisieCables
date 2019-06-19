@@ -28,7 +28,7 @@ class CommandeCable
     private $commande;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cable", inversedBy="cableCommande")
+     * @ORM\ManyToOne(targetEntity="Cable", inversedBy="cableCommande", cascade={"remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $cable;

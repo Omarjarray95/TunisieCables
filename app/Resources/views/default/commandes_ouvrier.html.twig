@@ -2,6 +2,13 @@
 
 {% block content %}
     <div class="table-settings">
+        <div class="settings">
+            <a href="{{ path('ajouter_commande') }}">
+                <button type="button" class="submit-btn">
+                    <i class="fas fa-clipboard-check"></i> Passer Une Nouvelle Commande
+                </button>
+            </a>
+        </div>
         <div class="table">
             <table border="1" class="data-table">
                 <thead>
@@ -11,9 +18,6 @@
                     </th>
                     <th>
                         Date d'Enregistrement
-                    </th>
-                    <th>
-                        Ouvrier Chargé de la Commande
                     </th>
                     <th>
                         Client
@@ -31,9 +35,6 @@
                         </td>
                         <td>
                             {{ commande.date | date('d F Y H:i:s') }}
-                        </td>
-                        <td>
-                            {{ commande.ouvrier.nom }} {{ commande.ouvrier.prenom }}
                         </td>
                         <td>
                             {{ commande.client.nom }} {{ commande.client.prenom }}

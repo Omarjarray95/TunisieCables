@@ -22,7 +22,7 @@ class Commande
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $date;
 
@@ -45,7 +45,7 @@ class Commande
     private $ouvrier;
 
     /**
-     * @ORM\OneToOne(targetEntity="Transport", cascade={"persist", "remove"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Transport", cascade={"persist", "merge", "remove"}, fetch="EAGER")
      * @ORM\JoinColumn(name="transport", referencedColumnName="id")
      */
     private $transport;

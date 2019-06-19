@@ -12,5 +12,12 @@ use Doctrine\ORM\NoResultException;
  */
 class CommandeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getCommandesOuvrier($id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT c FROM AppBundle:Commande c WHERE c.ouvrier =:id")
+            ->setParameter('id', $id);
 
+        return $query->getResult();
+    }
 }

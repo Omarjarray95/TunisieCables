@@ -10,14 +10,23 @@ namespace AppBundle\Repository;
  */
 class CableRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getCommandeCables($id)
+    public function getCommandeCablesPalettes($id)
     {
         $query = $this->getEntityManager()
-            ->createQuery("SELECT c as cable, count(p) as palettes, count(t) as tourets
-              FROM AppBundle:Cable c
-              INNER JOIN c.cableCommande cc WITH cc.commande =:id
-              LEFT JOIN AppBundle:Palette p WITH p.cable = c
-              LEFT JOIN AppBundle:Touret t WITH t.cable = c")
+            ->createQuery("SELECT p
+              FROM AppBundle:Palette p
+              INNER JOIN AppBundle:commandeCable cc WITH cc.commande =:id AND cc.cable = p.cable")
+            ->setParameter('id', $id);
+
+        return $query->getResult();
+    }
+
+    public function getCommandeCablesTourets($id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT t
+              FROM AppBundle:Touret t
+              INNER JOIN AppBundle:commandeCable cc WITH cc.commande =:id AND cc.cable = t.cable")
             ->setParameter('id', $id);
 
         return $query->getResult();

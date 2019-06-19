@@ -1,0 +1,110 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="table-settings">
+        <div class="table">
+            <table border="1" class="data-table">
+                <thead>
+                <tr>
+                    <th>
+                        Moyen
+                    </th>
+                    <th>
+                        Câble
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                    <th>
+                        Couleur
+                    </th>
+                    <th>
+                        Type du Métal
+                    </th>
+                    <th>
+                        Poids (Kg/Km)
+                    </th>
+                    <th>
+                        Caractéristiques
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for palette in palettes %}
+                    <tr>
+                        <td>
+                            Palette
+                        </td>
+                        <td>
+                            {{ palette.cable.libelle }}
+                        </td>
+                        <td>
+                            {{ palette.cable.type }}
+                        </td>
+                        <td>
+                            {{ palette.cable.couleur }}
+                        </td>
+                        <td>
+                            {{ palette.cable.typeMetal }}
+                        </td>
+                        <td>
+                            {{ palette.cable.poidsKgKm }}
+                        </td>
+                        <td>
+                            {{ palette.longueur }}x{{ palette.largeur }} /
+                            {{ palette.longueurCableMin }} - {{ palette.longueurCableMax }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% for touret in tourets %}
+                    <tr>
+                        <td>
+                            Touret
+                        </td>
+                        <td>
+                            {{ touret.cable.libelle }}
+                        </td>
+                        <td>
+                            {{ touret.cable.type }}
+                        </td>
+                        <td>
+                            {{ touret.cable.couleur }}
+                        </td>
+                        <td>
+                            {{ touret.cable.typeMetal }}
+                        </td>
+                        <td>
+                            {{ touret.cable.poidsKgKm }}
+                        </td>
+                        <td>
+                            {{ touret.diametre }} /
+                            {{ touret.longueurCableMin }} - {{ touret.longueurCableMax }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="register">
+        {{ form_start(form, {'method': 'post', 'action': path('ajouter_commande_transport', { 'id': id }),
+            'attr': {'class': 'register-form'}}) }}
+
+        <div class="register-table">
+            <div class="row">
+                <span>
+                    Transport
+                </span>
+                {{ form_widget(form.transport, {'attr':{'class':'field-list'}}) }}
+            </div>
+        </div>
+
+        <div>
+            <input type="submit" value="Soumettre" class="submit-btn" />
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock content %}

@@ -62,7 +62,7 @@ class Touret
     private $poidsVide;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cable", cascade={"merge"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Cable", cascade={"merge", "remove"}, fetch="EAGER")
      * @ORM\JoinColumn(name="cable", referencedColumnName="id")
      */
     private $cable;

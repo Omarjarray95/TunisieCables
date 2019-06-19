@@ -57,7 +57,7 @@ class Cable
     protected $quantite;
 
     /**
-     * @ORM\OneToMany(targetEntity="CommandeCable", mappedBy="cable")
+     * @ORM\OneToMany(targetEntity="CommandeCable", mappedBy="cable", cascade={"remove"})
      */
     private $cableCommande;
 

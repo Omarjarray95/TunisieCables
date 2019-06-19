@@ -58,27 +58,78 @@
                     <thead>
                     <tr>
                         <th>
+                            Moyen
+                        </th>
+                        <th>
                             Câble
                         </th>
                         <th>
-                            Nombre de Palettes
+                            Type
                         </th>
                         <th>
-                            Nombre de Tourets
+                            Couleur
+                        </th>
+                        <th>
+                            Type du Métal
+                        </th>
+                        <th>
+                            Poids (Kg/Km)
+                        </th>
+                        <th>
+                            Caractéristiques
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for cable in cables %}
+                    {% for palette in palettes %}
                         <tr>
                             <td>
-                                {{ cable.cable.libelle }}
+                                Palette
                             </td>
                             <td>
-                                {{ cable.palettes }}
+                                {{ palette.cable.libelle }}
                             </td>
                             <td>
-                                {{ cable.tourets }}
+                                {{ palette.cable.type }}
+                            </td>
+                            <td>
+                                {{ palette.cable.couleur }}
+                            </td>
+                            <td>
+                                {{ palette.cable.typeMetal }}
+                            </td>
+                            <td>
+                                {{ palette.cable.poidsKgKm }}
+                            </td>
+                            <td>
+                                {{ palette.longueur }}x{{ palette.largeur }} /
+                                {{ palette.longueurCableMin }} - {{ palette.longueurCableMax }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% for touret in tourets %}
+                        <tr>
+                            <td>
+                                Touret
+                            </td>
+                            <td>
+                                {{ touret.cable.libelle }}
+                            </td>
+                            <td>
+                                {{ touret.cable.type }}
+                            </td>
+                            <td>
+                                {{ touret.cable.couleur }}
+                            </td>
+                            <td>
+                                {{ touret.cable.typeMetal }}
+                            </td>
+                            <td>
+                                {{ touret.cable.poidsKgKm }}
+                            </td>
+                            <td>
+                                {{ touret.diametre }} /
+                                {{ touret.longueurCableMin }} - {{ touret.longueurCableMax }}
                             </td>
                         </tr>
                     {% endfor %}
