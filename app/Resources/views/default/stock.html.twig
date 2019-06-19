@@ -47,6 +47,13 @@
                         <td>
                             {{ cable.quantite }}
                         </td>
+                        <td>
+                            <a href="{{ path('modifier_cables', { 'id': cable.id }) }}">
+                                <button type="button" class="table-btn">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

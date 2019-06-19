@@ -14,11 +14,6 @@ class CableType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle')
-            ->add('type')
-            ->add('couleur')
-            ->add('typeMetal')
-            ->add('poidsKgKm')
             ->add('quantite');
     }
 
