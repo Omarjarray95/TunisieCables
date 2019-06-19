@@ -103,7 +103,8 @@ class CommandeController extends Controller
             $cable->setCouleur($form["couleur"]->getData());
             $cable->setTypeMetal($form["typeMetal"]->getData());
             $cable->setPoidsKgKm($form["poidsKgKm"]->getData());
-            $cable->setQuantite(0);
+            $quantite = rand(20, 100);
+            $cable->setQuantite($quantite);
             $em->persist($cable);
             $em->flush();
 
