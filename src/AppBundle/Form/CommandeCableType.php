@@ -18,7 +18,9 @@ class CommandeCableType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle', TextType::class, array('mapped' => false))
+            ->add('libelle', ChoiceType::class, array('choices'=> array('' => '', 'AR02V' => 'AR02V',
+                'SERIES 5-9' => 'SERIES 5-9', 'SERIES 298-299'=>'SERIES 298-299', 'F-YAY'=>'F-YAY',
+                'SERIES 98-99' => 'SERIES 98-99'), 'mapped' => false))
             ->add('type', ChoiceType::class, array('choices'=> array(''=>'','10'=>'10', '16'=>'16','25'=>'25',
                 '35'=>'35', '50' => '50'), 'mapped' => false))
             ->add('couleur', TextType::class, array('mapped' => false))
