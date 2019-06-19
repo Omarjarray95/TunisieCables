@@ -14,14 +14,14 @@ class CommandeTransportType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        /*$builder
             ->add('transport', EntityType::class, array(
                 'class' => 'AppBundle:Transport',
                 'choice_label' => function ($transport)
                 {
                     return $transport->getLibelle().' - '.$transport->getLongueur().' x '.$transport->getLargeur()
                         .' x '.$transport->getHauteur().' (m)';
-                }));
+                }));*/
     }
 
     /**

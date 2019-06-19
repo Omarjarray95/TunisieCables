@@ -95,7 +95,9 @@
                 <span>
                     Transport
                 </span>
-                {{ form_widget(form.transport, {'attr':{'class':'field-list'}}) }}
+                <span>
+                    {{ transport.libelle }} - {{ transport.longueur }} x {{ transport.largeur }} x {{ transport.hauteur }} (m)
+                </span>
             </div>
         </div>
 

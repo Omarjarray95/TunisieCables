@@ -113,7 +113,7 @@ class CommandeController extends Controller
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('4');
-                            $touret->setLibelle('Touret_4_'.$cable->getLibelle());
+                            $touret->setLibelle('TUN_'.$cable->getLibelle());
                             $touret->setDiametre(1050);
                             $touret->setLargeur(950);
                             $touret->setLongueurCable(5000);
@@ -127,7 +127,7 @@ class CommandeController extends Controller
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('4');
-                            $touret->setLibelle('Touret_4_'.$cable->getLibelle());
+                            $touret->setLibelle('TUN_'.$cable->getLibelle());
                             $touret->setDiametre(1050);
                             $touret->setLargeur(950);
                             $touret->setLongueurCable($longueur);
@@ -141,7 +141,7 @@ class CommandeController extends Controller
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('3');
-                            $touret->setLibelle('Touret_3_'.$cable->getLibelle());
+                            $touret->setLibelle('TTN_'.$cable->getLibelle());
                             $touret->setDiametre(1050);
                             $touret->setLargeur(650);
                             $touret->setLongueurCable($longueur);
@@ -155,7 +155,7 @@ class CommandeController extends Controller
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('2');
-                            $touret->setLibelle('Touret_2_'.$cable->getLibelle());
+                            $touret->setLibelle('TZN_'.$cable->getLibelle());
                             $touret->setDiametre(1050);
                             $touret->setLargeur(550);
                             $touret->setLongueurCable($longueur);
@@ -169,7 +169,7 @@ class CommandeController extends Controller
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('1');
-                            $touret->setLibelle('Touret_1_'.$cable->getLibelle());
+                            $touret->setLibelle('TCN_'.$cable->getLibelle());
                             $touret->setDiametre(1050);
                             $touret->setLargeur(450);
                             $touret->setLongueurCable($longueur);
@@ -183,12 +183,12 @@ class CommandeController extends Controller
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('1');
-                            $touret->setLibelle('Touret_1_'.$cable->getLibelle());
+                            $touret->setLibelle('TCN_'.$cable->getLibelle());
                             $touret->setDiametre(1050);
                             $touret->setLargeur(450);
                             $touret->setLongueurCable(50);
-                            $touret->setLongueurCableMax(200);
-                            $touret->setLongueurCableMin(50);
+                            $touret->setLongueurCableMax(2500);
+                            $touret->setLongueurCableMin(500);
                             $touret->setPoidsVide(20);
                             $em->persist($touret);
                             $commandeCable->setLongueurCable($commandeCable->getLongueurCable()
@@ -201,48 +201,48 @@ class CommandeController extends Controller
                 {
                     switch (true)
                     {
-                        case $longueur > 5000:
+                        case $longueur > 15000:
                             $palette = new Palette();
                             $palette->setCable($cable);
-                            $palette->setLibelle('Palette_1_'.$cable->getLibelle());
+                            $palette->setLibelle('Palette_EURO_'.$cable->getLibelle());
                             $palette->setPoidsMax(1000);
                             $palette->setPoidsVide(50);
                             $palette->setLongueur(120);
                             $palette->setLargeur(80);
                             $palette->setLongueurCableCouronnes(0.09);
-                            $palette->setLongueurCableMax(5000);
-                            $palette->setLongueurCableMin(2500);
+                            $palette->setLongueurCableMax(15000);
+                            $palette->setLongueurCableMin(2000);
                             $em->persist($palette);
                             $longueur = $longueur - 5000;
                             break;
-                        case ($longueur > 2500 && $longueur < 5000):
+                        case ($longueur > 15000 && $longueur < 2000):
                             $palette = new Palette();
                             $palette->setCable($cable);
-                            $palette->setLibelle('Palette_1_'.$cable->getLibelle());
+                            $palette->setLibelle('Palette_EURO_'.$cable->getLibelle());
                             $palette->setPoidsMax(1000);
                             $palette->setPoidsVide(50);
                             $palette->setLongueur(120);
                             $palette->setLargeur(80);
                             $palette->setLongueurCableCouronnes(0.09);
-                            $palette->setLongueurCableMax(5000);
-                            $palette->setLongueurCableMin(2500);
+                            $palette->setLongueurCableMax(15000);
+                            $palette->setLongueurCableMin(2000);
                             $em->persist($palette);
                             $longueur = 0;
                             break;
-                        case ($longueur > 0 && $longueur < 2500):
+                        case ($longueur > 0 && $longueur < 2000):
                             $palette = new Palette();
                             $palette->setCable($cable);
-                            $palette->setLibelle('Palette_1_'.$cable->getLibelle());
+                            $palette->setLibelle('Palette_EURO_'.$cable->getLibelle());
                             $palette->setPoidsMax(1000);
                             $palette->setPoidsVide(50);
                             $palette->setLongueur(120);
                             $palette->setLargeur(80);
                             $palette->setLongueurCableCouronnes(0.09);
-                            $palette->setLongueurCableMax(5000);
-                            $palette->setLongueurCableMin(5000);
+                            $palette->setLongueurCableMax(15000);
+                            $palette->setLongueurCableMin(2000);
                             $em->persist($palette);
                             $commandeCable->setLongueurCable($commandeCable->getLongueurCable()
-                                + (1300 - $longueur));
+                                + (2000 - $longueur));
                             $longueur = 0;
                             break;
                     }
@@ -287,17 +287,21 @@ class CommandeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository("AppBundle:Commande")->find($id);
+        $identifier = rand(1,3);
+        $transport = $em->getRepository("AppBundle:Transport")->find($identifier);
         $palettes = $em->getRepository("AppBundle:Cable")->getCommandeCablesPalettes($id);
         $tourets = $em->getRepository("AppBundle:Cable")->getCommandeCablesTourets($id);
         $form = $this->createForm(CommandeTransportType::class, $commande);
         $form->handleRequest($request);
         if($form->isValid() && $form->isSubmitted())
         {
+            $commande->setTransport($transport);
             $em->persist($commande);
             $em->flush();
             return $this->redirectToRoute('afficher_commandes_ouvrier');
         }
         return $this->render('default/ajouter_commande_transport.html.twig',
-            array('form' => $form->createView(), 'palettes' => $palettes, 'tourets' => $tourets, 'id' => $id));
+            array('form' => $form->createView(), 'palettes' => $palettes, 'tourets' => $tourets, 'transport' => $transport,
+                'id' => $id));
     }
 }
