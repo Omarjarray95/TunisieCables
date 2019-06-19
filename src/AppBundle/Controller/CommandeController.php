@@ -123,7 +123,7 @@ class CommandeController extends Controller
                             $em->persist($touret);
                             $longueur = $longueur - 5000;
                             break;
-                        case ($longueur < 5000 && $longueur > 3500):
+                        case ($longueur <= 5000 && $longueur >= 3500):
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('4');
@@ -137,7 +137,7 @@ class CommandeController extends Controller
                             $em->persist($touret);
                             $longueur = 0;
                             break;
-                        case ($longueur < 3500 && $longueur > 3000):
+                        case ($longueur <= 3500 && $longueur >= 3000):
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('3');
@@ -151,7 +151,7 @@ class CommandeController extends Controller
                             $em->persist($touret);
                             $longueur = 0;
                             break;
-                        case ($longueur < 3000 && $longueur > 2500):
+                        case ($longueur <= 3000 && $longueur >= 2500):
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('2');
@@ -165,7 +165,7 @@ class CommandeController extends Controller
                             $em->persist($touret);
                             $longueur = 0;
                             break;
-                        case ($longueur < 2500 && $longueur > 500):
+                        case ($longueur <= 2500 && $longueur >= 500):
                             $touret = new Touret();
                             $touret->setCable($cable);
                             $touret->setType('1');
@@ -215,7 +215,7 @@ class CommandeController extends Controller
                             $em->persist($palette);
                             $longueur = $longueur - 5000;
                             break;
-                        case ($longueur > 15000 && $longueur < 2000):
+                        case ($longueur >= 15000 && $longueur <= 2000):
                             $palette = new Palette();
                             $palette->setCable($cable);
                             $palette->setLibelle('Palette_EURO_'.$cable->getLibelle());
