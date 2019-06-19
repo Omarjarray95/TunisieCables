@@ -51,6 +51,15 @@ class CommandeController extends Controller
         $palettes = $em->getRepository("AppBundle:Cable")->getCommandeCablesPalettes($id);
         $tourets = $em->getRepository("AppBundle:Cable")->getCommandeCablesTourets($id);
 
+        /*$normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object)
+        {
+            return $object;
+        });
+        $serializer = new Serializer([$normalizer]);
+        $formatted = $serializer->normalize($tourets);
+        return new JsonResponse($formatted);*/
+
         return $this->render('default/commande.html.twig',
             array('commande' => $commande, 'palettes' => $palettes, 'tourets' => $tourets));
     }
@@ -296,7 +305,7 @@ class CommandeController extends Controller
         if($form->isValid() && $form->isSubmitted())
         {
             $commande->setTransport($transport);
-            $em->persist($commande);
+            $em->merge($commande);
             $em->flush();
             return $this->redirectToRoute('afficher_commandes_ouvrier');
         }

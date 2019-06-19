@@ -27,6 +27,12 @@
                     <th>
                         Caractéristiques
                     </th>
+                    <th>
+                        Longueur Total du Câble
+                    </th>
+                    <th>
+                        Câble Découpé
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,6 +60,16 @@
                             {{ palette.longueur }}x{{ palette.largeur }} /
                             {{ palette.longueurCableMin }} - {{ palette.longueurCableMax }}
                         </td>
+                        <td>
+                            {{ palette.cable.cableCommande[0].longueurCable }}
+                        </td>
+                        <td>
+                            {% if palette.cable.cableCommande[0].cableDecoupe == true %}
+                                Oui
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
                 {% for touret in tourets %}
@@ -80,6 +96,16 @@
                             {{ touret.diametre }} /
                             {{ touret.longueurCableMin }} - {{ touret.longueurCableMax }}
                         </td>
+                        <td>
+                            {{ touret.cable.cableCommande[0].longueurCable }}
+                        </td>
+                        <td>
+                            {% if touret.cable.cableCommande[0].cableDecoupe == true %}
+                                Oui
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -93,6 +119,18 @@
         <div class="register-table">
             <div class="row">
                 <span>
+                    Câble
+                </span>
+                <select class="field-list">
+                    <option value="volvo">AR02V</option>
+                    <option value="saab">SERIES 5-9</option>
+                    <option value="mercedes">SERIES 298-299</option>
+                    <option value="audi">F-YAY</option>
+                    <option value="audi">SERIES 98-99</option>
+                </select>
+            </div>
+            <div class="row">
+                <span>
                     Libelle
                 </span>
                 {{ form_widget(form.libelle, {'attr':{'class':'field'}}) }}
@@ -101,7 +139,7 @@
                 <span>
                     Type
                 </span>
-                {{ form_widget(form.type, {'attr':{'class':'field'}}) }}
+                {{ form_widget(form.type, {'attr':{'class':'field-list'}}) }}
             </div>
             <div class="row">
                 <span>

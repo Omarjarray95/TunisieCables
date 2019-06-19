@@ -78,6 +78,12 @@
                         <th>
                             Caractéristiques
                         </th>
+                        <th>
+                            Longueur Total du Câble
+                        </th>
+                        <th>
+                            Câble Découpé
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -105,6 +111,17 @@
                                 {{ palette.longueur }}x{{ palette.largeur }} /
                                 {{ palette.longueurCableMin }} - {{ palette.longueurCableMax }}
                             </td>
+                            <td>
+                                {{ palette.cable.cableCommande[0].longueurCable }}
+                            </td>
+                            <td>
+                                {% if palette.cable.cableCommande[0].cableDecoupe == true %}
+                                    Oui
+                                {% else %}
+                                    Non
+                                {% endif %}
+                            </td>
+
                         </tr>
                     {% endfor %}
                     {% for touret in tourets %}
@@ -130,6 +147,16 @@
                             <td>
                                 {{ touret.diametre }} /
                                 {{ touret.longueurCableMin }} - {{ touret.longueurCableMax }}
+                            </td>
+                            <td>
+                                {{ touret.cable.cableCommande[0].longueurCable }}
+                            </td>
+                            <td>
+                                {% if touret.cable.cableCommande[0].cableDecoupe == true %}
+                                    Oui
+                                {% else %}
+                                    Non
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
