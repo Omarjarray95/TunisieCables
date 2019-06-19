@@ -224,7 +224,7 @@ class CommandeController extends Controller
                             $em->persist($palette);
                             $longueur = $longueur - 5000;
                             break;
-                        case ($longueur >= 15000 && $longueur <= 2000):
+                        case ($longueur >= 2000 && $longueur <= 15000):
                             $palette = new Palette();
                             $palette->setCable($cable);
                             $palette->setLibelle('Palette_EURO_'.$cable->getLibelle());
