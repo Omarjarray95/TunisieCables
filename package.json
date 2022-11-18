@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "dependencies": {
-    "@symfony/webpack-encore": "^0.27.0"
+    "@symfony/webpack-encore": "^4.1.1"
   },
   "devDependencies": {
     "node-sass": "^4.12.0",
